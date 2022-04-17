@@ -9,49 +9,40 @@
 const figure = $(".figure");
 const input = $(".input");
 const select = $(".select");
-const DELAY = 500;
+const DELAY = 150;
+
+function transform(width, height, radius) {
+  figure.fadeOut(DELAY);
+  setTimeout (() => {
+    figure.width(`${width}px`);
+    figure.height(`${height}px`);
+    figure.css("border-radius", `${radius}%`);
+  }, DELAY);
+  figure.fadeIn(DELAY);
+} 
 
 input.change(() => {
   figure.fadeOut(DELAY);
       setTimeout (() => {
         figure.css("background-color", input.val());
       }, DELAY);
-      figure.fadeIn(DELAY);
-  
-
+  figure.fadeIn(DELAY);
 });
 
 select.change(() => {
   switch (select.val()) {
     case "square": {
-      figure.fadeOut(DELAY);
-      setTimeout (() => {
-        figure.width("300px");
-        figure.height("300px");
-        figure.css("border-radius", "0");
-      }, DELAY);
-      figure.fadeIn(DELAY);
+      transform(300, 300, 0);
       break;
     }
     case "rect": {
-      figure.fadeOut(DELAY);
-      setTimeout (() => {
-        figure.width("200px");
-        figure.height("300px");
-        figure.css("border-radius", "0");
-      }, DELAY);
-      figure.fadeIn(DELAY);
+      transform(200, 300, 0);
       break;
     }
     default: {
-      figure.fadeOut(DELAY);
-      setTimeout (() => {
-        figure.width("300px");
-        figure.height("300px");
-        figure.css("border-radius", "50%");
-      }, DELAY);
-      figure.fadeIn(DELAY);
+      transform(300, 300, 50);
       break;
     }
   }
 });
+

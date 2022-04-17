@@ -9,30 +9,48 @@
 const figure = $(".figure");
 const input = $(".input");
 const select = $(".select");
+const DELAY = 500;
 
 input.change(() => {
-  figure.css("background-color", input.val());
+  figure.fadeOut(DELAY);
+      setTimeout (() => {
+        figure.css("background-color", input.val());
+      }, DELAY);
+      figure.fadeIn(DELAY);
+  
 
 });
 
 select.change(() => {
   switch (select.val()) {
     case "square": {
-      figure.width("300px");
-      figure.height("300px");
-      figure.css("border-radius", "0");
+      figure.fadeOut(DELAY);
+      setTimeout (() => {
+        figure.width("300px");
+        figure.height("300px");
+        figure.css("border-radius", "0");
+      }, DELAY);
+      figure.fadeIn(DELAY);
       break;
     }
     case "rect": {
-      figure.width("200px");
-      figure.height("300px");
-      figure.css("border-radius", "0");
+      figure.fadeOut(DELAY);
+      setTimeout (() => {
+        figure.width("200px");
+        figure.height("300px");
+        figure.css("border-radius", "0");
+      }, DELAY);
+      figure.fadeIn(DELAY);
       break;
     }
     default: {
-      figure.width("300px");
-      figure.height("300px");
-      figure.css("border-radius", "50%");
+      figure.fadeOut(DELAY);
+      setTimeout (() => {
+        figure.width("300px");
+        figure.height("300px");
+        figure.css("border-radius", "50%");
+      }, DELAY);
+      figure.fadeIn(DELAY);
       break;
     }
   }
